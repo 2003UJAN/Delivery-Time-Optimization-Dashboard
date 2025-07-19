@@ -25,6 +25,7 @@ def generate_synthetic_data(n=500):
 
         order_time = datetime.now() - timedelta(minutes=random.randint(5, 120))
         delivery_time = order_time + timedelta(minutes=random.randint(7, 25))
+
         data.append({
             "order_id": f"OID{random.randint(1000, 9999)}",
             "origin": locations[origin],
@@ -37,7 +38,7 @@ def generate_synthetic_data(n=500):
     df = pd.DataFrame(data)
     df["delivery_duration_min"] = (df["delivery_time"] - df["order_time"]).dt.total_seconds() / 60
     df.to_csv("data/synthetic_delivery_data.csv", index=False)
-    print("✅ Synthetic data generated!")
+    print("✅ Synthetic delivery data generated!")
 
 if __name__ == "__main__":
     generate_synthetic_data()
