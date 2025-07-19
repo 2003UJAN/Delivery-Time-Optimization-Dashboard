@@ -1,6 +1,6 @@
 import streamlit as st
 import plotly.express as px
-from src.analysis import load_data, get_avg_delivery_time, get_volume_by_location, get_delay_alerts
+from analysis import load_data, get_avg_delivery_time, get_volume_by_location, get_delay_alerts
 
 st.set_page_config(page_title="Delivery Time Optimization", layout="wide")
 st.title("🚚 Delivery Time Optimization Dashboard")
