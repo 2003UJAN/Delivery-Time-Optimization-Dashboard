@@ -1,10 +1,7 @@
 import pandas as pd
-import os
 
-def load_data(path="data/synthetic_delivery_data.csv"):
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"Dataset not found at {path}. Please run data_generator.py first.")
-    return pd.read_csv(path, parse_dates=["order_time", "delivery_time"])
+def load_data():
+    return pd.read_csv("data/delivery_data.csv", parse_dates=["start_time", "end_time"])
 
 def get_avg_delivery_time(df):
     return df["delivery_duration_min"].mean()
