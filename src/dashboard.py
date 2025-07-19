@@ -11,8 +11,7 @@ df = load_data()
 
 # Sidebar input for Google Maps API
 api_key = st.sidebar.text_input("🔑 Enter your Google Maps API Key", type="password")
-
-st.sidebar.markdown("Use [Google Cloud Console](https://console.cloud.google.com/) to get your API key.")
+st.sidebar.markdown("Get your key from [Google Cloud Console](https://console.cloud.google.com/)")
 
 # KPIs
 col1, col2, col3 = st.columns(3)
@@ -38,7 +37,7 @@ st.subheader("⏱️ Delivery Time Distribution")
 fig2 = px.histogram(df, x="delivery_duration_min", nbins=25, title="Delivery Time Histogram")
 st.plotly_chart(fig2, use_container_width=True)
 
-# Google Maps Comparison
+# Google Maps comparison
 if api_key:
     st.subheader("🗺️ Google Maps Duration Estimator")
 
@@ -56,11 +55,11 @@ if api_key:
         st.write(f"**Actual Delivery:** {actual:.2f} min")
 
     with col_b:
-        st.write(f"**Estimated by Google:** {result['duration_text']}")
+        st.write(f"**Google Estimate:** {result['duration_text']}")
         if result['duration_min']:
             diff = actual - result['duration_min']
-            st.write(f"**Diff:** {diff:+.2f} min")
+            st.write(f"**Difference:** {diff:+.2f} min")
 
-# Data preview
+# Data table
 st.subheader("📋 Sample Data")
 st.dataframe(df.sample(10))
